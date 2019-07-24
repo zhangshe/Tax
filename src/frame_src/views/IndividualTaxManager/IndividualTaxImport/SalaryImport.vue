@@ -830,6 +830,7 @@ export default {
           distinguishCancelAndClose: true,
           confirmButtonText: "确定",
           cancelButtonText: "放弃",
+          customClass:'message-layout'
           
         })
           .then(() => {
@@ -1027,7 +1028,8 @@ export default {
 
 
 
-<style lang="scss" scoped>
+<style lang="scss" >
+
 .page {
   text-align: center;
 }
@@ -1039,8 +1041,12 @@ a.astyle:hover {
   color: #cc3300;
   text-decoration: underline;
 }
-.el-message-box__content{
-  height: 300px!important;
+// .el-message-box__content{
+//   height: 300px!important;
+//   overflow-y: auto!important ;
+// }
+.message-layout{
+    height: 300px!important;
   overflow-y: auto!important ;
 }
 </style>                                                                                                   
