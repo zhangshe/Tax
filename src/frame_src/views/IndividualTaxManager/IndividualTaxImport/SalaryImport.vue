@@ -780,6 +780,7 @@ export default {
     },
 
     handleSuccess(res, file, fileList) {
+      
       var message = res.message;
       var title = "失败";
       var type = "error";
@@ -791,6 +792,12 @@ export default {
         fd.append("dateMonth", this.$store.state.user.sysTime); //传其他参数
         fd.append("userId", this.$store.state.user.userId); //传其他参数
         return new Promise((resolve, reject) => {
+             const loading = this.$loading({
+          lock: true,
+          text: 'Loading',
+          spinner: 'el-icon-loading',
+          background: 'rgba(0, 0, 0, 0.7)'
+        });
           uploadTaxSalary(fd)
             .then(response => {
               if (response.data.code === 2000) {
@@ -804,7 +811,7 @@ export default {
                   type: type,
                   duration: 5000
                 });
-
+                           loading.close();
                 this.showUpload = false;
                 this.getList();
               } else {
@@ -818,7 +825,7 @@ export default {
                   type: type,
                   duration: 5000
                 });
-
+                           loading.close();
                 this.showUpload = false;
                 this.getList();
               }
@@ -841,6 +848,12 @@ export default {
             fd.append("dateMonth", this.$store.state.user.sysTime); //传其他参数
             fd.append("userId", this.$store.state.user.userId); //传其他参数
             return new Promise((resolve, reject) => {
+               const loading = this.$loading({
+          lock: true,
+          text: 'Loading',
+          spinner: 'el-icon-loading',
+          background: 'rgba(0, 0, 0, 0.7)'
+        });
               uploadTaxSalary(fd)
                 .then(response => {
                   if (response.data.code === 2000) {
@@ -854,6 +867,7 @@ export default {
                       type: type,
                       duration: 5000
                     });
+                     loading.close();
                     this.showUpload = false;
                     this.getList();
                   } else {
@@ -867,6 +881,7 @@ export default {
                       type: type,
                       duration: 5000
                     });
+                     loading.close();
                     this.showUpload = false;
                     this.getList();
                   }
@@ -884,7 +899,7 @@ export default {
           duration: 5000
         });
       }
-
+           loading.close();
       this.showUpload = false;
       this.getList();
     },
